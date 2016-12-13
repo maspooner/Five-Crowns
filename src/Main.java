@@ -8,6 +8,7 @@
  */
 
 public class Main{
+	public static final boolean IS_TEST = true;
 	
 	private static Thread currentGame;
 	

@@ -41,9 +41,9 @@ public class IO {
 	static final String aboutText="Five Crowns v"+Main.version+"\n\nProject Timeline: June-July 2013\n\nMade by:\n   coders:   Matt Spooner, Peter Spooner\n   graphic artist:   Emily Spooner";
 	static final String welcomeText="Welcome to Five Crowns!\nIf this is your first time playing this game, please view the rules under File -> Help -> Rules.\nIf you are " +
 			"familiar with the rules but you have not used this application before,\n   please view the tutorial under File -> Help -> Tutorial.\nTo start a game, go to File -> New Game.";
-	private static final String FILE_PATH="cards/";
-	private static final String TUTORIAL_PATH="tutorial/";//TODO put / before path
-	private static final String SCORES_FILE="scores.txt";
+	private static final String FILE_PATH = "cards/";
+	private static final String TUTORIAL_PATH = "tutorial/";
+	private static final String SCORES_FILE = "scores.txt";
 	static int pictureCounter=0;
 	private static final int TOTAL_PICTURES=20;
 	static String[] highScoreNames;
@@ -54,10 +54,14 @@ public class IO {
 	private static BufferedImage loadImage(String fileName){
 		BufferedImage i= null;
 		try {
-			String imageFileName=FILE_PATH+fileName+".png";
-			//TODO switch when editing code
-//			i=ImageIO.read(IO.class.getResourceAsStream(imageFileName));
-			i=ImageIO.read(new File(imageFileName));
+			String imageFileName = FILE_PATH + fileName + ".png";
+			if(Main.IS_TEST){
+				i = ImageIO.read(new File(imageFileName));
+			}
+			else{
+				i = ImageIO.read(IO.class.getResourceAsStream("/" + imageFileName));
+			}
+			
 		} catch(Exception e){
 			System.err.println("Couldn't read file.");
 			e.printStackTrace();

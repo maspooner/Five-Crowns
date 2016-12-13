@@ -9,7 +9,6 @@ public class Table {
 	static int currentDealer=0;
 	static int numPlayers=0;
 	static int currentWild=3;
-	//TODO CHANGE TO 3 ^^
 	static final int MAX_HAND=13;
 	
 	public static void setNumPlayers(int i){
